@@ -1,0 +1,2 @@
+class BdraftController < ApplicationController
+end

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_200717) do
+ActiveRecord::Schema.define(version: 2020_07_01_205901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bdrafts", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.integer "amount"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
@@ -25,16 +34,7 @@ ActiveRecord::Schema.define(version: 2020_06_30_200717) do
 
   create_table "transaction_groups", force: :cascade do |t|
     t.integer "group_id"
-    t.integer "transaction_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "transactions", force: :cascade do |t|
-    t.string "name"
-    t.date "date"
-    t.float "amount"
-    t.integer "user_id"
+    t.integer "bdraft_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
