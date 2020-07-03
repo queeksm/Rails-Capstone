@@ -1,0 +1,22 @@
+<div>
+  Your total is : <%= @sum %>
+</div>
+
+<% @transactions.each do |transaction| %>
+  <% if !transaction.groups.first.nil? %>
+    Name:  <%= transaction.name %>
+    Amount: <%= transaction.amount %>
+    Date: <%= transaction.date %>
+    Group: <%= transaction.groups.first.name %>
+  <% else%>
+    Name:  <%= transaction.name %>
+    Amount: <%= transaction.amount %>
+    Date: <%= transaction.date %>
+    Group: None
+  <% end %>
+<% end %>
+
+<div>
+<%= link_to  'Add new', new_bdraft_path %>
+</div>
+<%= link_to  "Back", user_index_path %>

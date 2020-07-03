@@ -1,0 +1,12 @@
+<h1>Welcome to New Groups</h1>
+
+
+<%= form_for @group ,url: '/group' do |f| %>
+  <%= f.label "Your Username Here" %>
+  <%= f.text_field :name ,:placeholder => "Name" %>
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+  <%= f.submit "Create" %>
+<% end %>
+
+<%= link_to  "Back", group_index_path %>

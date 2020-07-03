@@ -1,0 +1,12 @@
+<h1>You're on external</h1>
+
+<% @etransactions.each do |transaction| %>
+  Name:  <%= transaction.name %>
+  Amount: <%= transaction.amount %>
+  Date: <%= transaction.date %>  
+<% end %>
+
+<div>
+<%= link_to  'Add new', new_bdraft_path %>
+</div>
+<%= link_to  "Back", user_index_path %>

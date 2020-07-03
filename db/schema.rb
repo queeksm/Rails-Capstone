@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_205901) do
     t.string "name"
     t.integer "user_id"
     t.integer "amount"
+    t.integer "group"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

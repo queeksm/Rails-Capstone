@@ -1,0 +1,10 @@
+<h1>Welcome to groups</h1>
+
+<% @groups.each do |group| %>
+  <%= link_to group.name, group_transactions_path(group.id) %> 
+    
+<% end %>
+
+<%= link_to  "Back", user_index_path %>
+
+<%= link_to  "Create new", new_group_path %>

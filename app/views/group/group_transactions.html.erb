@@ -1,0 +1,9 @@
+<h1>Welcome to Group Transactions</h1>
+
+<% @transactions.each do |trans| %>
+  Name : <%= trans.name %>
+  Author: <%= trans.user_id %>  
+<% end %>
+
+
+<%= link_to  "Back", user_index_path %>

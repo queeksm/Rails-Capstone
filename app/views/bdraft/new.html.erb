@@ -1,0 +1,18 @@
+<h1>Welcome to New transactions</h1>
+
+
+<%= form_for @transaction ,url: '/bdraft' do |f| %>
+  <%= f.label "Your Username Here" %>
+  <%= f.text_field :name ,:placeholder => "Name" %>
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+  <%= f.label :amount %>
+  <%= f.number_field :amount, :placeholder => '100000'  %>
+  <%= f.label :group %>
+  <%= f.select :group, options_for_select(Group.all.collect {|p| [p.id]}) , {include_blank: true}%>
+  <%= f.submit "Create" %>
+  
+<% end %>
+
+
+<%= link_to  "Back", bdraft_index_path %>
