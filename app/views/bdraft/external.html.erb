@@ -1,0 +1,30 @@
+<div class= "container bg-light">
+<div class = "bg-primary text-center text-light">
+  <div class = "h1 ">
+  Welcome <%= current_user.username%> to your external transactions.
+  </div>
+</div>
+
+<div class= "align-content-left">
+  <div class = "flex flex-column">
+    <% @etransactions.each do |transaction| %>
+      <div class = "d-flex border mt-2 mb-2 p-3">        
+          <div class = "pr-2">
+          Name:  <%= transaction.name %>
+          </div>
+          <div class = "pr-2">
+          Amount: <%= transaction.amount %>
+          </div>
+          <div class = "pr-2">
+          Date: <%= transaction.date%>
+          </div>       
+      </div>
+    <%end%>
+  </div>
+</div>
+
+<div class= "text-center">  
+  <%= link_to  'Add new', new_bdraft_path , class: "btn btn-primary btn-block align-center"%>
+  <%= link_to  "Back", user_index_path , class: "btn btn-primary btn-block align-center" %>
+</div>
+</div>

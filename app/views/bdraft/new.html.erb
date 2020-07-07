@@ -1,0 +1,25 @@
+<div class = "container bg-light">
+  <div class = "text-center text-light bg-primary">
+  <h1>Welcome to New transactions</h1>
+  </div>
+  <div class = "py-3">
+  <%= form_for @transaction ,url: '/bdraft' do |f| %>
+    <div class = "py-3">
+    <%= f.label "Transaction name" %>
+    <%= f.text_field :name ,:placeholder => "Name" %>    
+    <%= f.label :date %>
+    <%= f.date_field :date %>    
+    <%= f.label :amount %>
+    <%= f.number_field :amount, :placeholder => '100000'  %>    
+    <%= f.label :group %>
+    <%= f.select :group, options_for_select(Group.all.collect {|p| [p.id]}) , {include_blank: true}%>
+    </div>
+    <div class= "text-center">      
+      <%= f.submit "Create", class: "btn btn-primary btn-block align-center"%>      
+    </div>   
+  <% end %>
+  </div>
+
+<%= link_to  "Back", bdraft_index_path , class: "btn btn-primary btn-block align-center" %>
+
+</div>
