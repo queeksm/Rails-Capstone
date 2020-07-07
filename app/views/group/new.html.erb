@@ -1,12 +1,21 @@
-<h1>Welcome to New Groups</h1>
+<div class = "container bg-light">
+  <div class = "text-center text-light bg-primary">
+    <h1>Create a new group</h1>
+  </div>
+<div class = "py-3">
+  <%= form_for @group ,url: '/group' do |f| %>
+    <div class = "py-3">
+      <%= f.label "Name" %>
+      <%= f.text_field :name ,:placeholder => "Name" %>
+      <%= f.label :date %>      
+      <%= f.date_field :date %>
+    </div>
+    <div class= "text-center">
+      <%= f.submit "Create" , class: "btn btn-primary btn-block align-center"%>
+    </div>
+  <% end %>
+</div>
+<%= link_to  "Back", group_index_path , class: "btn btn-primary btn-block align-center" %>
 
 
-<%= form_for @group ,url: '/group' do |f| %>
-  <%= f.label "Your Username Here" %>
-  <%= f.text_field :name ,:placeholder => "Name" %>
-  <%= f.label :date %>
-  <%= f.date_field :date %>
-  <%= f.submit "Create" %>
-<% end %>
-
-<%= link_to  "Back", group_index_path %>
+</div>

@@ -1,6 +1,6 @@
 class BdraftController < ApplicationController
   def index
-    @transactions = Bdraft.where(user_id: current_user.id )     
+    @transactions = Bdraft.where(user_id: current_user.id ).order('created_at DESC')
     @sum = 0
     @transactions.each do |trans|
       @sum += trans.amount

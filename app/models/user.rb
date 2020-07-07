@@ -6,4 +6,6 @@ class User < ApplicationRecord
   
   has_many :transactions
   has_many :groups
+  validates :username, presence: true, length: {minimum:3, maximum:20}
+  validates :email , uniqueness: true , presence: true
 end

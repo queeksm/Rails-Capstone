@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :user
   resources :bdraft
   resources :group
+  resources :public
 
   root to: 'public#homepage'
 

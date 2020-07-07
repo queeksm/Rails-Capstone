@@ -1,10 +1,22 @@
-<h1>Welcome to groups</h1>
+<div class = "container bg-light">
+  <div class= "text-center bg-primary text-light">
+   <h1>Welcome to groups</h1>
+  </div>
 
-<% @groups.each do |group| %>
-  <%= link_to group.name, group_transactions_path(group.id) %> 
-    
-<% end %>
-
-<%= link_to  "Back", user_index_path %>
-
-<%= link_to  "Create new", new_group_path %>
+  <div class= "align-content-left">
+    <div class = "flex flex-column">
+      <% @groups.each do |group| %>
+        <div class = "d-flex border mt-2 mb-2 p-3">
+          <div class = "pr-2">
+            <%= link_to group.name, group_transactions_path(group.id) %>
+          </div>
+          <div class = "pr-2">
+            <%= group.date%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to  "Back", user_index_path , class: "btn btn-primary btn-block align-center" %>
+  <%= link_to  "Create new", new_group_path , class: "btn btn-primary btn-block align-center"%>
+</div>

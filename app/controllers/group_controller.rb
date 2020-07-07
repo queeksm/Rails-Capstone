@@ -1,6 +1,6 @@
 class GroupController < ApplicationController
   def index
-    @groups = Group.all
+    @groups = Group.all.order('name ASC')
   end
 
   def group_transactions

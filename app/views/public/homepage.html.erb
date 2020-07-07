@@ -1,8 +1,12 @@
-<h1>Log in<h1>
+<div class = "container bg-light">
+  <div class = "bg-primary text-center text-light">
+    <h1>Transaction application<h1>
+  </div>
+  <% if user_signed_in? %>
+    <%= link_to  "Log out", destroy_user_session_path, method: :delete, class: "btn" %>
+  <% end %>
 
-<% if user_signed_in? %>
-<%= link_to  "Log out", destroy_user_session_path, method: :delete, class: "btn" %>
-<% end %>
-
-<%= link_to  "Sign Up", new_user_registration_path, class: "actions" %>
-<%= link_to  "Log In", new_user_session_path, class: "actions" %> 
+  <%= link_to  "Sign Up", new_user_registration_path, class: "btn btn-primary btn-block align-center" %>    
+  <%= link_to  "Log In", new_user_session_path, class: "btn btn-primary btn-block align-center" %> 
+  
+</div>
