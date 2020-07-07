@@ -1,6 +1,6 @@
 # Scaffold for the Rails capstone project.
 
-This repo contains the barebones of a transactional management application, the functionality if operational and you can expand on it. It also has some basic styling using bootstrap 4.
+This repo contains the barebones of a transactional management application, the functionality if operational and you can expand on it. It also has some basic styling using bootstrap 4. The additional MVC feature is a fully fledged authentication log in with Devise.
 
 ## Built With
 
@@ -10,8 +10,7 @@ This repo contains the barebones of a transactional management application, the 
 
 ## Live Demo
 
-TBA
-
+https://intense-anchorage-26906.herokuapp.com/
 
 ## Getting Started
 
