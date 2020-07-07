@@ -25,12 +25,12 @@ RSpec.describe Bdraft, type: :model do
     end
 
     it 'creates a new transaction group' do
-      tg = TransactionGroup.create(group_id: '1', bdraft_id: '1')
+      TransactionGroup.create(group_id: '1', bdraft_id: '1')
       @group.bdrafts.all.each do |trans|
-        expect(trans.id).to eq(1) 
+        expect(trans.id).to eq(1)
       end
       @transaction.groups.all.each do |grp|
-        expect(grp.id).to eq(1) 
+        expect(grp.id).to eq(1)
       end
     end
   end

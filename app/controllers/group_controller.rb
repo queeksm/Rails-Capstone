@@ -5,12 +5,12 @@ class GroupController < ApplicationController
 
   def group_transactions
     @groups = Group.find(params[:id])
-    @transactions =  @groups.bdrafts.all
+    @transactions = @groups.bdrafts.all
   end
 
-  def new   
+  def new
     @group = Group.new
-  end 
+  end
 
   def create
     @group = Group.new(group_params)
@@ -22,10 +22,8 @@ class GroupController < ApplicationController
       redirect_to group_index_path, alert: 'Post was not created.'
     end
   end
-  
+
   def group_params
     params.require(:group).permit(:name, :date)
   end
-  
-  
 end
