@@ -22,7 +22,7 @@ class BdraftController < ApplicationController
     @transaction.user_id = current_user.id
 
     if @transaction.save
-      if !@transaction.group.nil?
+      unless @transaction.group.nil?
         tg = TransactionGroup.new
         tg.group_id = @transaction.group
         tg.bdraft_id = @transaction.id
