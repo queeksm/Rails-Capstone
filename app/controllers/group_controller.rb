@@ -4,7 +4,7 @@ class GroupController < ApplicationController
   end
 
   def group_transactions
-    @groups = Group.find(params[:id])
+    @groups = Group.find(tra_id)
     @transactions = @groups.bdrafts.all
   end
 
@@ -19,11 +19,18 @@ class GroupController < ApplicationController
     if @group.save
       redirect_to group_index_path, alert: 'Group was successfully created.'
     else
-      redirect_to group_index_path, alert: 'Post was not created.'
+      redirect_to group_index_path, alert: 'Group was not created.'
     end
   end
+
+  private
 
   def group_params
     params.require(:group).permit(:name, :date)
   end
+
+  def tra_id
+    params[:id]
+  end
+  
 end
