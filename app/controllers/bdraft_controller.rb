@@ -41,12 +41,16 @@ class BdraftController < ApplicationController
         tg.group_id = @transaction.group
         tg.bdraft_id = @transaction.id
         tg.save
-      end
+      end      
     end
 
-    flash.notice = "Article '#{@transaction.name}' Updated!"
+    if @transaction.group.nil?
+      redirect_to external_path
+    else
+      redirect_to bdraft_index_path
+    end
   
-    redirect_to bdraft_index_path
+    
   end
   
   def destroy
@@ -61,7 +65,11 @@ class BdraftController < ApplicationController
       @tg.each do |tg|
         tg.destroy
       end
-      redirect_to bdraft_index_path
+      if @transaction.group.nil?
+        redirect_to external_path
+      else
+        redirect_to bdraft_index_path
+      end
     end    
   end
   
@@ -77,7 +85,11 @@ class BdraftController < ApplicationController
         tg.save
       end
     end
-    redirect_to bdraft_index_path
+    if @transaction.group.nil?
+      redirect_to external_path
+    else
+      redirect_to bdraft_index_path
+    end
   end
   
   private

@@ -1,5 +1,5 @@
-<div class = "container bg-light">
-<div class = "container bg-primary text-center">
+<div class = " bg-grey">
+<div class = " bg-gradient text-center">
   <h1 class = "text-light">
     Welcome <%= current_user.username%> to the groups page.
   </h1>
@@ -7,20 +7,23 @@
 <div class= "align-content-left">
   <div class = "flex flex-column">
     <% @transactions.each do |trans| %>
-    <div class = "d-flex border mt-2 mb-2 p-3">
-      <div class = "pr-2">
-      Name : <%= trans.name %>
+    <div class = "d-flex border my-2 mx-2 p-3 bg-white">
+      <div class = "d-flex w-75">
+        <div class = "pr-2 w-50">
+        <%= trans.name %>
+        </div>
+        <div class = "pr-2 font-weight-bold w-50">
+         $<%= trans.amount%>
+        </div>
       </div>
-      <div class = "pr-2">
-      Amount: <%= trans.amount%>
-      </div>
-      <div class = "pr-2">
-      Author: <%= trans.user.username %>
+      <div class = "pr-2 w-25">
+        <%= trans.user.username %>
       </div>
     </div>
     <% end %>
   </div>
 </div>
-<%= link_to  "Back", group_index_path , class: "btn btn-primary btn-block align-center" %>
-
+<div>
+  <%= link_to  "Back", group_index_path , class: "btn bg-green btn-block align-center" %>
+</div>
 </div>

@@ -1,21 +1,29 @@
-<div class = "container bg-light">
-  <div class = "text-center text-light bg-primary">
+<div class = "bg-light">
+  <div class = "text-center text-light bg-gradient">
     <h1>Create a new group</h1>
   </div>
 <div class = "py-3">
   <%= form_for @group ,url: '/group' do |f| %>
-    <div class = "py-3">
-      <%= f.label "Name" %>
-      <%= f.text_field :name ,:placeholder => "Name" %>
-      <%= f.label :date %>      
-      <%= f.date_field :date %>
+    <div class = "py-3 d-flex flex-column">
+      <div class = "p-3 bg-white d-flex flex-column m-2">
+        <div class = "text-center grey">
+        <%= f.label "Name: "%>
+        </div>
+        <%= f.text_field :name ,:placeholder => "Name", class: "field border" %>
+      </div>
+      <div class = "p-3 bg-white d-flex flex-column m-2">
+        <div class = "text-center grey">
+        <%= f.label :date %>
+        </div>
+        <%= f.date_field :date , class: "field border"%>
+      </div>
     </div>
     <div class= "text-center">
-      <%= f.submit "Create" , class: "btn btn-primary btn-block align-center"%>
+      <%= f.submit "Create" , class: "btn bg-green btn-block align-center"%>
     </div>
   <% end %>
 </div>
-<%= link_to  "Back", group_index_path , class: "btn btn-primary btn-block align-center" %>
+<%= link_to  "Back", group_index_path , class: "btn bg-green btn-block align-center" %>
 
 
 </div>

@@ -1,9 +1,9 @@
 module BdraftHelper
-  def bdraft_indexer(transaction)
-      content = (('<div class = "pr-2">' +  'Name: ' + (transaction.name) + '</div>'))
-      content.concat(('<div class = "pr-2">' +  'Amount: ' + (transaction.amount).to_s + '</div>'))
-      content.concat(('<div class = "pr-2">' +  'Date: ' + (transaction.date).to_s + '</div>'))
-      content.concat(('<div class = "pr-2">' +  'Group: ' + (transaction.groups.first.name) + '</div>'))      
-      content.html_safe
+  def redirecter(transaction)
+    if transaction.group.nil?
+      (link_to  "Back", external_path , class: "btn bg-green btn-block align-center").html_safe
+    else
+      (link_to  "Back", bdraft_index_path , class: "btn bg-green btn-block align-center").html_safe
+    end
   end
 end

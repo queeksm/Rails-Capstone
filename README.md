@@ -1,6 +1,8 @@
 # Scaffold for the Rails capstone project.
 
-This repo contains the barebones of a transactional management application, the functionality if operational and you can expand on it. It also has some basic styling using bootstrap 4. The additional MVC feature is a fully fledged authentication log in with Devise.
+This repo contains the barebones of a transactional management application, the functionality if operational and you can expand on it. It also has some basic styling using bootstrap 4. Added the option to edit and delete the transactions within my transactions and my external transactions sections.
+
+The ERD model shows a Many to Many relationship between the groups and the transactions(Bdrafts), this is implemented on the Active record however the functionality is not fully used within the application, but it can be expanded on the future, that's why it's implemented on the active record.
 
 ## Built With
 
