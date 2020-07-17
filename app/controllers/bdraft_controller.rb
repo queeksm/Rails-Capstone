@@ -1,6 +1,7 @@
 class BdraftController < ApplicationController
   def index
-    @transactions = Bdraft.where(user_id: current_user.id).where.not(group: nil).includes(:groups).order('created_at DESC')
+    @transactions = Bdraft.where(
+      user_id: current_user.id).where.not(group: nil).includes(:groups).order('created_at DESC')
     @sum = 0
     @transactions.each do |trans|
       @sum += trans.amount
@@ -8,7 +9,7 @@ class BdraftController < ApplicationController
   end
 
   def external
-    @transactions = Bdraft.where(user_id: current_user.id).where(group: nil)    
+    @transactions = Bdraft.where(user_id: current_user.id).where(group: nil)
   end
 
   def new
@@ -23,25 +24,15 @@ class BdraftController < ApplicationController
   def update
     @transaction = Bdraft.find(ed_id)
     @transaction.update(bdraft_params)
-    transGrou = TransactionGroup.all
-    @tg = transGrou.where(bdraft_id: ed_id)
+    trans_grou = TransactionGroup.all
+    @tg = trans_grou.where(bdraft_id: ed_id)
     if @tg.nil?
-      unless @transaction.group.nil?
-        tg = TransactionGroup.new
-        tg.group_id = @transaction.group
-        tg.bdraft_id = @transaction.id
-        tg.save
+      tg_creator(@transaction)
+    else
+      @tg.each do |trans_g|
+        trans_g.destroy
       end
-    else      
-      @tg.each do |tg|
-        tg.destroy
-      end
-      unless @transaction.group.nil?
-        tg = TransactionGroup.new
-        tg.group_id = @transaction.group
-        tg.bdraft_id = @transaction.id
-        tg.save
-      end      
+      tg_creator(@transaction)     
     end
 
     if @transaction.group.nil?
@@ -49,41 +40,34 @@ class BdraftController < ApplicationController
     else
       redirect_to bdraft_index_path
     end
-  
-    
   end
   
   def destroy
     @transaction = Bdraft.find(ed_id)
     @transaction.destroy
-    transGrou = TransactionGroup.all
-    @tg = transGrou.where(bdraft_id: ed_id)
+    trans_grou = TransactionGroup.all
+    @tg = trans_grou.where(bdraft_id: ed_id)
 
     if @tg.nil?
       redirect_to bdraft_index_path
     else      
-      @tg.each do |tg|
-        tg.destroy
+      @tg.each do |trans_g|
+        trans_g.destroy
       end
       if @transaction.group.nil?
         redirect_to external_path
       else
         redirect_to bdraft_index_path
       end
-    end    
+    end
   end
-  
+
 
   def create
     @transaction = Bdraft.new(bdraft_params)
     @transaction.user_id = current_user.id
     if @transaction.save
-      unless @transaction.group.nil?
-        tg = TransactionGroup.new
-        tg.group_id = @transaction.group
-        tg.bdraft_id = @transaction.id
-        tg.save
-      end
+      tg_creator(@transaction)
     end
     if @transaction.group.nil?
       redirect_to external_path
@@ -93,6 +77,15 @@ class BdraftController < ApplicationController
   end
   
   private
+
+  def tg_creator(transaction)
+    unless transaction.group.nil?
+      tg = TransactionGroup.new
+      tg.group_id = transaction.group
+      tg.bdraft_id = transaction.id
+      tg.save
+    end
+  end
 
   def bdraft_params
     params.require(:bdraft).permit(:name, :date, :group, :amount)

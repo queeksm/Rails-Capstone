@@ -32,5 +32,5 @@ class GroupController < ApplicationController
   def tra_id
     params[:id]
   end
-  
+
 end
