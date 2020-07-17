@@ -75,6 +75,8 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 Thanks to Microverse.
+Thanks to Gregoire Vella for the inspiration on the design of the app.
+Checkout the original desing here: https://www.behance.net/gallery/19759151/Snapscan-iOs-design-and-branding
 
 ## 📝 License
 
