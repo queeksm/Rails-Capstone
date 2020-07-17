@@ -1,9 +1,9 @@
-<div class = "bg-light">
+<div class = "bg-grey">
   <div class = "text-center text-light bg-gradient">
     <h1>Welcome to New transactions</h1>
   </div>
   <div class = "py-3">
-  <%= form_for @transaction ,url: '/bdraft' do |f| %>
+  <%= form_for @transaction do |f| %>   
     <div class = "py-3 d-flex flex-column">
       <div class = "p-3 bg-white d-flex flex-column m-2">
         <div class = "text-center grey">
@@ -31,11 +31,11 @@
       </div>
     </div>
     <div class= "text-center">      
-      <%= f.submit "Create", class: "btn bg-green btn-block align-center"%>      
+      <%= f.submit "Edit", class: "btn bg-green btn-block align-center"%>      
     </div>   
   <% end %>
   </div>
 
-<%= link_to  "Back", bdraft_index_path , class: "btn bg-green btn-block align-center" %>
+  <%= redirecter(@transaction)%>
 
 </div>

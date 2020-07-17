@@ -1,30 +1,36 @@
-<div class= "container bg-light">
-<div class = "bg-primary text-center text-light">
+<div class= "bg-grey">
+<div class = "bg-gradient text-center text-light">
   <div class = "h1 ">
-  Welcome <%= current_user.username%> to your external transactions.
+    Your external transactions.
   </div>
 </div>
 
-<div class= "align-content-left">
-  <div class = "flex flex-column">
-    <% @etransactions.each do |transaction| %>
-      <div class = "d-flex border mt-2 mb-2 p-3">        
-          <div class = "pr-2">
-          Name:  <%= transaction.name %>
+
+<div class= "bg-grey d-flex flex-column">  
+    <% @transactions.each do |transaction| %>
+    <div class = "d-flex bg-white p-3 mt-2 mx-2">      
+      <div class = "flex flex-column w-100">
+        <div class = "d-flex mt-2">
+          <div class = "d-flex w-100">          
+            <div class = "pr-2 w-25 font-size-12 grey"> <%= (transaction.name)%> </div>
+            <div class = "px-3 flex-fill text-right font-weight-bold"> $<%= (transaction.amount)%> </div>    
           </div>
-          <div class = "pr-2">
-          Amount: <%= transaction.amount %>
+          <div class = "d-flex flex-fill justify-content-end pr-3">          
+            <%= link_to  'Edit', edit_bdraft_path(transaction.id) %>
           </div>
-          <div class = "pr-2">
-          Date: <%= transaction.date%>
-          </div>       
+          <div class = "d-flex justify-content-end">          
+            <%= link_to  'Delete', bdraft_path(transaction.id), method: :delete, data: {confirm: "Really want to delete the transaction"} %>
+          </div>
+        </div>
+        <div class = "mt-2 px-3">
+          <div class = "pr-2 font-size-5 grey"> <%= (transaction.date).to_s %> </div>
+        </div>
       </div>
-    <%end%>
-  </div>
+    </div>
+    <% end %>  
 </div>
-
-<div class= "text-center">  
-  <%= link_to  'Add new', new_bdraft_path , class: "btn btn-primary btn-block align-center"%>
-  <%= link_to  "Back", user_index_path , class: "btn btn-primary btn-block align-center" %>
+<div class= "text-center mt-4">  
+  <%= link_to  'Add new', new_bdraft_path , class: "btn bg-green btn-block align-center"%>
+  <%= link_to  "Back", user_index_path , class: "btn bg-green btn-block align-center" %>
 </div>
 </div>
