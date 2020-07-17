@@ -29,6 +29,8 @@ Metrics/BlockLength:
 
 Style/Documentation:
   Enabled: false
+Style/SafeNavigation:
+  Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
 Style/SymbolProc:

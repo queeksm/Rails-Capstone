@@ -19,7 +19,7 @@ RSpec.describe 'Application', type: :feature, js: true do
       click_on 'Log in'
     end
 
-    scenario 'Log in' do  
+    scenario 'Log in' do
       expect(page).to have_content('Welcome')
     end
 
@@ -34,7 +34,7 @@ RSpec.describe 'Application', type: :feature, js: true do
       click_on 'Create'
       expect(page).to have_content('transaction2')
       first(:link, 'Edit').click
-      fill_in 'Name',	with: 'transaction3'
+      fill_in 'Name', with: 'transaction3'
       click_on 'Edit'
       expect(page).to have_content('transaction3')
       first(:link, 'Delete').click

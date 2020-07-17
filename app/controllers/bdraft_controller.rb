@@ -1,7 +1,6 @@
 class BdraftController < ApplicationController
   def index
-    @transactions = Bdraft.where(
-        user_id: current_user.id).where.not(group: nil).includes(:groups).order('created_at DESC')
+    @transactions = Bdraft.where(user_id: current_user.id).where.not(group: nil).includes(:groups).order('created_at DESC')
     @sum = 0
     @transactions.each do |trans|
       @sum += trans.amount
@@ -25,7 +24,7 @@ class BdraftController < ApplicationController
     @transaction = Bdraft.find(ed_id)
     @transaction.update(bdraft_params)
     trans_grou = TransactionGroup.all
-    @tg = trans_grou.where(bdraft_id: ed_id)    
+    @tg = trans_grou.where(bdraft_id: ed_id)
     unless @tg.nil?
       @tg.each do |trans_g|
         trans_g.destroy
@@ -47,7 +46,7 @@ class BdraftController < ApplicationController
 
     if @tg.nil?
       redirect_to bdraft_index_path
-    else      
+    else
       @tg.each do |trans_g|
         trans_g.destroy
       end
@@ -70,7 +69,7 @@ class BdraftController < ApplicationController
       redirect_to bdraft_index_path
     end
   end
-  
+
   private
 
   def tg_creator(transaction)
@@ -87,5 +86,4 @@ class BdraftController < ApplicationController
   def ed_id
     params[:id]
   end
-
 end
