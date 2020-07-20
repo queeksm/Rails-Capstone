@@ -1,6 +1,6 @@
 class GroupController < ApplicationController
   def index
-    @groups = Group.all.order('name ASC')
+    @groups = Group.all.order('name ASC').includes(:bdrafts)
   end
 
   def group_transactions
@@ -26,7 +26,7 @@ class GroupController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :date)
+    params.require(:group).permit(:name)
   end
 
   def tra_id
