@@ -1,8 +1,9 @@
-<h1>Log in faggot<h1>
-
-<% if user_signed_in? %>
-<%= link_to  "Log out", destroy_user_session_path, method: :delete, class: "btn" %>
-<% end %>
-
-<%= link_to  "Sign Up", new_user_registration_path, class: "btn" %>
-<%= link_to  "Sign In", new_user_session_path, class: "btn" %> 
+<div class = "bg-light mt-2 d-flex flex-column align-items-stretch h-100">
+  <div class = " d-flex h-50 justify-content-center align-content-center">
+    <h1 class = "d-flex center">Application</h1>
+  </div>
+  <div class = "justify-content-center">
+  <%= link_to  "Log In", new_user_session_path, class: "btn bg-standard btn-block align-center" %>
+  <%= link_to  "Sign Up", new_user_registration_path, class: "btn btn-block align-center" %>    
+  </div>  
+</div>

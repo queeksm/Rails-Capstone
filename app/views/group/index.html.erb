@@ -1,0 +1,28 @@
+<div class = "bg-grey">
+  <div class= "text-center bg-gradient text-light">
+   <h1>Welcome to groups</h1>
+  </div>
+
+  <div class= "align-content-left">
+    <div class = "flex flex-column">
+      <% @groups.each do |group| %>
+        <div class = "d-flex border my-2 mx-2 p-3 bg-white">
+          <div class = "w-75 d-flex">
+            <div class = "pr-2 align-self-center w-50 font-size-2">
+              <%= link_to group.name, group_transactions_path(group.id) %>
+            </div>
+            <div class = "pr-2 align-self-center w-50">
+              <%= group_total(group)%>
+            </div>            
+          </div>
+          <div class = "pr-2 font-size-2">
+              Creator: <%= group.user.username%>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <%= link_to  "Create new", new_group_path , class: "btn bg-green btn-block align-center"%>
+  <%= link_to  "Back", user_index_path , class: "btn bg-green btn-block align-center" %>
+</div>

@@ -1,0 +1,41 @@
+<div class = "bg-light">
+  <div class = "text-center text-light bg-gradient">
+    <h1>Welcome to New transactions</h1>
+  </div>
+  <div class = "py-3">
+  <%= form_for @transaction ,url: '/bdraft' do |f| %>
+    <div class = "py-3 d-flex flex-column">
+      <div class = "p-3 bg-white d-flex flex-column m-2">
+        <div class = "text-center grey">
+        <%= f.label "Transaction name: "%>
+        </div>
+        <%= f.text_field :name ,:placeholder => "Name", class: "field border" %>
+      </div>
+      <div class = "p-3 bg-white d-flex flex-column m-2">
+        <div class = "text-center grey">
+        <%= f.label :date %>
+        </div>
+        <%= f.date_field :date , class: "field border"%>
+      </div>
+      <div class = "p-3 bg-white d-flex flex-column m-2">
+        <div class = "text-center grey"> 
+        <%= f.label :amount %>
+        </div>
+        <%= f.number_field :amount, :placeholder => '100000' , class: "field border" %>
+      </div>
+      <div class = "p-3 bg-white d-flex flex-column m-2">
+        <div class = "text-center grey">
+        <%= f.label :group %>
+        </div>
+        <%= f.collection_select :group, Group.all.collect, :id, :name, prompt: true, include_blank: true , class: "field border" %>
+      </div>
+    </div>
+    <div class= "text-center">      
+      <%= f.submit "Create", class: "btn bg-green btn-block align-center"%>      
+    </div>   
+  <% end %>
+  </div>
+
+<%= link_to  "Back", bdraft_index_path , class: "btn bg-green btn-block align-center" %>
+
+</div>
