@@ -1,6 +1,6 @@
 class GroupController < ApplicationController
   def index
-    @groups = Group.all.order('name ASC')
+    @groups = Group.all.order('name ASC').includes(:bdrafts)
   end
 
   def group_transactions
