@@ -26,7 +26,7 @@ class GroupController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :date)
+    params.require(:group).permit(:name)
   end
 
   def tra_id
